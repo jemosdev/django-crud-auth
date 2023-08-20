@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 
 # Create your views here.
@@ -38,3 +38,24 @@ def signout(request):
     "signout instead logout to avoid reserved word"
     logout(request)
     return redirect('home')
+
+
+def signin(request):
+    "signin instead login to avoid reserved word"
+    if request.method == 'GET':
+        return render(request, 'signin.html', {
+            'form': AuthenticationForm
+            })
+    else:
+        #if method == 'POST'
+        user= authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:    
+            #if user is not valid and show with an error
+            return render(request, 'signin.html', {
+                'form': AuthenticationForm,
+                'error': 'Username or Password is incorrect'
+            })
+        else:
+            #if user exist
+            login(request, user)    #save session of user
+            return redirect('tasks')
