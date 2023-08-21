@@ -40,8 +40,16 @@ def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', {'form': TaskForm})
     else:
-        print(request.POST)
-        return render(request, 'create_task.html', {'form': TaskForm})
+        try:
+            #creating form to save it
+            form= TaskForm(request.POST)
+            new_task= form.save(commit=False)
+            new_task.user = request.user
+            #only save data in DB
+            new_task.save()
+            return redirect('tasks')
+        except ValueError:
+            return render(request, 'create_task.html', {'form': TaskForm, 'error':'Please provide a valid data'})
 
 def signout(request):
     "signout instead logout to avoid reserved word"
