@@ -39,6 +39,11 @@ def tasks(request):
     return render(request, 'tasks.html', {'tasks':tasks})
 
 
+def tasks_completed(request):
+    tasks= Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'tasks.html', {'tasks':tasks})
+
+
 def create_task(request):
     
     if request.method == 'GET':
@@ -72,7 +77,7 @@ def task_detail(request,task_id):
             return render(request, 'task_detail.html', {'task': task, 'form': form, 'error': 'Error updating task'})
 
 
-def completed_task(request, task_id):
+def complete_task(request, task_id):
     task= get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.datecompleted = timezone.now()
