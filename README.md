@@ -26,16 +26,16 @@ This project is a CRUD in Django to create tasks using protected routes.
 ### **Views:**
 
 #### -Home:
-![](D:\programming\proyectos\django-crud-auth\Clipboard01.jpg)
+![](https://github.com/jemosdev/django-crud-auth/blob/main/Clipboard01.jpg)
 
 #### -Signup:
-![](D:\programming\proyectos\django-crud-auth\Clipboard02.jpg)
+![](https://github.com/jemosdev/django-crud-auth/blob/main/Clipboard02.jpg)
 
 #### -Create task:
-![](D:\programming\proyectos\django-crud-auth\Clipboard03.jpg)
+![](https://github.com/jemosdev/django-crud-auth/blob/main/Clipboard03.jpg)
 
 #### -Update, complete and delete:
-![](D:\programming\proyectos\django-crud-auth\Clipboard04.jpg)
+![](https://github.com/jemosdev/django-crud-auth/blob/main/Clipboard04.jpg)
 
 
 ### Acknowledgements:
