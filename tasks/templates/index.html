@@ -9,8 +9,12 @@
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam reiciendis amet optio doloribus autem dicta quia, fuga temporibus expedita consequuntur sapiente sit illo natus a animi porro repudiandae quaerat. Saepe laboriosam id tenetur hic illum, reiciendis voluptatem vero nisi ipsa, voluptas perspiciatis. Itaque doloremque consectetur fuga delectus et, culpa ipsum.
         </p>
         <div class="text-center">
+            {% if user.is_authenticated %}
+            <a href="/tasks/create/" class="btn btn-success">Create task</a>
+            {% else %}
             <a href="/login/" class="btn btn-primary">Log In</a>
             <a href="/signup/" class="btn btn-warning">Signup</a>
+            {% endif %}
         </div>
     </section>
 </main>
